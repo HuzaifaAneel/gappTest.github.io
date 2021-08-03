@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DepartmentStoreRequest;
+use App\Http\Resources\DepartmentResource;
+use App\Models\Department;
 use Illuminate\Http\Request;
 
 class DepartmentController extends Controller
@@ -14,7 +17,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $department = Department::all();
+        return DepartmentResource::collection($department);
     }
 
     /**
@@ -33,9 +37,11 @@ class DepartmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DepartmentStoreRequest $request)
     {
-        //
+        $department = Department::create($request->validated());
+
+        return response()->json($department);
     }
 
     /**
@@ -44,9 +50,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Department $department)
     {
-        //
+        return new DepartmentResource($department);
     }
 
     /**
@@ -67,9 +73,9 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DepartmentStoreRequest $request, Department $department)
     {
-        //
+        $department->update($request->validated());
     }
 
     /**
@@ -78,8 +84,10 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        //
+        $department->delete();
+
+        return response()->json('Deleted');
     }
 }

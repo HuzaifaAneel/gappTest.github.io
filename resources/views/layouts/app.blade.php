@@ -52,19 +52,19 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-              <a class="nav-link" href="#">
-                  <span>Department Management</span></a>
-          </li>
-
+              <a class="nav-link" href="/departments">
+                <span>Department Management</span></a>
+            </li>
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
-
+            
             <!-- Nav Item - Dashboard -->
+            
             <li class="nav-item active">
               <a class="nav-link" href="/teams">
                   <span>Team Management</span></a>
           </li>
-
         </ul>
         <!-- End of Sidebar -->
 
