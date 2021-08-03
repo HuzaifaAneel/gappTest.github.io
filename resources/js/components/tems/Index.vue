@@ -50,7 +50,7 @@
 
                                 <!-- <td>{{team.team_lead}}</td> -->
                                 <td>
-                                    <router-link :to="{name: 'TeamEdit', params: {id:team.id}}">
+                                    <router-link :to="{name: 'TeamsEdit', params: {id:team.id}}">
                                         <button class=" btn btn-success">Edit</button>
                                     </router-link>
 
@@ -71,6 +71,8 @@
         data() {
             return {
                 teams: [],
+                showMessage: false,
+                message: ''
             }
         },
 
@@ -86,6 +88,14 @@
                 }).catch(error => {
                 console.log(error);
                 });
+            },
+
+             deleteTeam(id) {
+                 axios.delete('api/teams/' +id).then(response=> {
+                    this.showMessage = true;
+                    this.message = response.data;
+                    this.getTeams();
+         });
             }
         },
     }

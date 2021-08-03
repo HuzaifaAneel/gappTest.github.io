@@ -66,7 +66,7 @@
         },
 
         created () {
-            this.storeUser;
+            this.storeUser();
         },
 
         methods: {

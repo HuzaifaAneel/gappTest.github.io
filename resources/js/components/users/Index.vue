@@ -7,9 +7,9 @@
 
     <div class="row">
         <div class="card mx-auto">
-            <div v-if="showMessage">
+            <!-- <div v-if="showMessage">
                     <div class="alert alert-success">{{message}}</div>
-            </div>
+            </div> -->
             <div class="card-header">
                 <div class="row">
                     <div class="col">
@@ -82,6 +82,12 @@
                 }).catch(error => {
                 console.log(error);
                 })
+            },
+
+             deleteUser(id) {
+                 axios.delete('api/users/' +id).then(response=> {
+                  console.log(response);
+         });
             }
         },
     }

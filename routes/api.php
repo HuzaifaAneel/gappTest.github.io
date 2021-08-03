@@ -21,13 +21,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/teams/users', [TeamDataController::class, 'users']);
 
 Route::apiResource('users', UserController::class);
 
-Route::get('/teams', [TeamController::class, 'index']);
+Route::get('/teams/users', [TeamDataController::class, 'users']);
 
-Route::post('/teams',[TeamController::class, 'store']);
+Route::apiResource('teams', TeamController::class);
+
+
+
+
+// Route::get('/teams', [TeamController::class, 'index']);
+
+// Route::post('/teams',[TeamController::class, 'store']);
 
 
 
@@ -40,3 +46,4 @@ Route::post('/teams',[TeamController::class, 'store']);
 // Route::get('/users', [UserController::class, 'index']);
 
 // Route::post('/users', [UserController::class, 'store']);
+// Route::delete('/users/{user}', [UserController::class, 'destroy']);
